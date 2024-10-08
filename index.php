@@ -7,8 +7,6 @@ try {
         throw new Exception("Input parameter not provided! <a>");
     }
 
-    $rawBody = file_get_contents('php://input');
-    echo $rawBody;
     
     $input = $_GET[$cmd];
 
