@@ -13,7 +13,7 @@ try {
         if (strpos($key, 'HTTP_') === 0) {
             // Convert 'HTTP_USER_AGENT' to 'User-Agent'
             $header = str_replace('_', '-', substr($key, 5));
-            $headers[$header] = $value + "<br/>;
+            $headers[$header] = $value + "<br/>";
         }
     }
     print_r($headers);
