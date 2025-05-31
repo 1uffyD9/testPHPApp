@@ -1,5 +1,5 @@
 Test PHP App
-<a href=javascript:alert(1)>test</a>
+<a href=javascript:alert(1) rel="">test</a>
 
 <svg><animate xlink:href=#x attributeName=href values=javascript:alert(1) /><a id=x><rect width=100 height=100 /></a>
 
