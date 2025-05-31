@@ -1,7 +1,8 @@
 Test PHP App
 
 
+<svg xmlns="http://www.w3.org/2000/svg">
+  <image href="javascript:alert(1)"/>
+</svg>
 
-<iframe id=x onfocus=alert(1)></iframe>
-<iframe onafterscriptexecute=alert(1)><script>1</script></iframe>
-<iframe id=x onfocus=alert(1)></iframe></body>
+here
