@@ -1,2 +1,4 @@
 Test PHP App
-<img src/onerror=alert(1)>
+
+
+<link onafterscriptexecute=alert(1)><script>1</script>
