@@ -18,8 +18,8 @@ RUN echo "=== Step 2: No additional dependencies required for this simple applic
 # Log: Creating low privilege user
 RUN echo "=== Step 3: Creating low privilege user ===" && \
     groupadd -r phpapp && \
-    useradd -r -g phpapp -u 1001 -s /bin/bash -m phpapp && \
-    echo "Created user 'phpapp' with UID 1001 and group 'phpapp'"
+    useradd -r -g phpapp -u 10001 -s /bin/bash -m phpapp && \
+    echo "Created user 'phpapp' with UID 10001 and group 'phpapp'"
 
 # Log: Setting up working directory
 RUN echo "=== Step 4: Setting up working directory ===" && \
