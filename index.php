@@ -4,18 +4,20 @@ header('Content-Type: application/json');
 
 // Create the token data array
 $tokenData = [
-    "id" => 12345,
-    "name" => "My Token",
+    "id" => 15258253,
+    "name" => "testToken",
     "revoked" => false,
-    "created_at" => "2024-07-01T10:00:00.000Z",
+    "created_at" => "2025-07-13T14:15:40.298Z",
+    "description" => "",
     "scopes" => [
         "api",
-        "read_user"
+        "read_api"
     ],
-    "user_id" => 67890,
-    "last_used_at" => "2024-07-03T14:30:00.000Z",
+    "user_id" => 29036205,
+    "last_used_at" => "2025-07-13T14:19:03.083Z",
     "active" => true,
-    "expires_at" => null
+    "expires_at" => "2025-08-12",
+    "last_used_ips" => []
 ];
 
 // Return JSON response
