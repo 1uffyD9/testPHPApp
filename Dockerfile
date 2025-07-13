@@ -63,7 +63,7 @@ RUN echo "=== Application will be available on port 80 ==="
 RUN echo "=== Service will run as low privilege user 'phpapp' ==="
 
 # Switch to the low privilege user
-USER phpapp
+USER 10001
 
 # Start Apache in the foreground
 CMD ["apache2-foreground"]
