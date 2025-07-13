@@ -12,7 +12,7 @@ RUN echo "=== Step 1: Updating system packages ===" && \
     apt-get update && \
     apt-get upgrade -y
 
-# Log: Skipping additional dependencies (not needed for simple JSON API)
+# Log: Skipping additional dependencies (not needed for simple JSON API) 
 RUN echo "=== Step 2: No additional dependencies required for this simple application ==="
 
 # Log: Creating low privilege user
