@@ -17,9 +17,9 @@ RUN echo "=== Step 2: No additional dependencies required for this simple applic
 
 # Log: Creating low privilege user
 RUN echo "=== Step 3: Creating low privilege user ===" && \
-    groupadd -r phpapp && \
-    useradd -r -g phpapp -u 10001 -s /bin/bash -m phpapp && \
-    echo "Created user 'phpapp' with UID 10001 and group 'phpapp'"
+    addgroup -g 10001 phpapp && \
+    adduser --disabled-password --no-create-home --uid 10001 --ingroup phpapp phpappuser && \
+    echo "Created user 'phpappuser' with UID 10001 and group 'phpapp'"
 
 # Log: Setting up working directory
 RUN echo "=== Step 4: Setting up working directory ===" && \
@@ -36,16 +36,16 @@ RUN echo "Application files copied successfully"
 
 # Log: Setting proper permissions
 RUN echo "=== Step 6: Setting file permissions for low privilege user ===" && \
-    chown -R phpapp:phpapp /var/www/html && \
+    chown -R phpappuser:phpapp /var/www/html && \
     chmod -R 755 /var/www/html && \
-    echo "File permissions set for user 'phpapp'"
+    echo "File permissions set for user 'phpappuser'"
 
 # Log: Configuring Apache
 RUN echo "=== Step 7: Configuring Apache settings ===" && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
-    echo "User phpapp" >> /etc/apache2/apache2.conf && \
+    echo "User phpappuser" >> /etc/apache2/apache2.conf && \
     echo "Group phpapp" >> /etc/apache2/apache2.conf && \
-    echo "Apache configuration updated to run as user 'phpapp'"
+    echo "Apache configuration updated to run as user 'phpappuser'"
 
 # Log: Cleaning up
 RUN echo "=== Step 8: Cleaning up temporary files ===" && \
@@ -60,7 +60,7 @@ EXPOSE 80
 RUN echo "=== Step 9: Final setup completed ==="
 RUN echo "=== Docker build process finished successfully ==="
 RUN echo "=== Application will be available on port 80 ==="
-RUN echo "=== Service will run as low privilege user 'phpapp' ==="
+RUN echo "=== Service will run as low privilege user 'phpappuser' ==="
 
 # Switch to the low privilege user
 USER 10001
