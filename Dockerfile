@@ -45,7 +45,9 @@ RUN echo "=== Step 7: Configuring Apache settings ===" && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     echo "User phpapp" >> /etc/apache2/apache2.conf && \
     echo "Group phpapp" >> /etc/apache2/apache2.conf && \
-    echo "Apache configuration updated to run as user 'phpapp'"
+    echo "Listen 8080" >> /etc/apache2/apache2.conf && \
+    sed -i 's/80/8080/g' /etc/apache2/sites-available/000-default.conf && \
+    echo "Apache configuration updated to run as user 'phpapp' on port 8080"
 
 # Log: Cleaning up
 RUN echo "=== Step 8: Cleaning up temporary files ===" && \
@@ -53,13 +55,13 @@ RUN echo "=== Step 8: Cleaning up temporary files ===" && \
     rm -rf /var/lib/apt/lists/* && \
     echo "Cleanup completed"
 
-# Expose port 80
-EXPOSE 80
+# Expose port 8080
+EXPOSE 8080
 
 # Log: Final setup
 RUN echo "=== Step 9: Final setup completed ==="
 RUN echo "=== Docker build process finished successfully ==="
-RUN echo "=== Application will be available on port 80 ==="
+RUN echo "=== Application will be available on port 8080 ==="
 RUN echo "=== Service will run as low privilege user 'phpapp' ==="
 
 # Switch to the low privilege user
