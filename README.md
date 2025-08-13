@@ -2,4 +2,4 @@ Test PHP App
 
 Hello World 2!
 
-<ruby onafterscriptexecute=alert(1)><script>1</script>
+</div></div></div></div></div><script>1</script>
